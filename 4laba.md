@@ -21,6 +21,41 @@
 
 3) Попробовав некоторые образы, я решила использовать один из них.
 
-4) Я ввела  ```docker run -d --name aafireContainer mavroprov/aafire``` , а так же для aafireContainer2 (я сделала это так же в двух директориях для каждого контейнера)
+4) Я ввела  ```docker run -d --name aafireContainer mavroprov/aafire``` , а так же для aafireContainer2 
 
 5) Процесс работы контейнеров:
+   
+<img width="500" src="3.png"/>
+
+<img width="500" src="4.png"/>
+
+
+6) Утилита ping уже была установлена в моем терминале
+
+7) Далее по указаниям из задания я ввела все команды:
+```docker network create myNetwork```
+
+```docker network connect myNetwork aafireContainer```
+
+```docker network connect myNetwork aafireContainer2```
+
+```docker network inspect myNetwork```
+
+8) Затем выяснила айпи-адреса контейнеров 
+
+```docker inspect aafireContainer | grep "IPAddress"```
+
+```docker inspect aafireContainer2 | grep "IPAddress"```
+
+<img width="500" src="5.png"/>
+
+
+9) Я разделила терминал на два окна, проверила связь с помощью входа в каждый контейнер и ввода айпи другого через ping
+
+```docker exec -it afireContainer2 ping 172.17.0.3```
+
+```docker exec -it afireContainer1 ping 172.17.0.2```
+
+<img width="500" src="6.png"/>
+
+10) Контейнеры находятся в одной сети
